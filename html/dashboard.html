@@ -4,88 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard - Evasão Escolar</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Biblioteca para gráficos -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link href="/css/dashboard.css" rel="stylesheet">
 </head>
 <body>
   <div class="container">
     <h1>Dados de Evasão Escolar</h1>
     
-    <!-- Filtros -->
-    <div class="filtros">
-      <select id="estado">
-        <option value="todos">Todos os Estados</option>
-        <option value="sp">São Paulo</option>
-        <option value="am">Amazonas</option>
-      </select>
-      <select id="serie">
-        <option value="todos">Todas as Séries</option>
-        <option value="1">1ª Série</option>
-        <option value="2">2ª Série</option>
-      </select>
-      <button id="aplicar-filtros">Aplicar</button>
+    <!-- Filtros e Estatísticas -->
+    <div class="filtros-container">
+      <div class="filtros">
+        <select id="estado">
+          <option value="Todos">Todos os Estados</option>
+          <option value="SP">São Paulo</option>
+          <option value="AM">Amazonas</option>
+        </select>
+        
+        <div class="info-box">
+          <p class="info-label">Escolas afetadas</p>
+          <p id="escolas-afetadas" class="info-value">...</p>
+        </div>
+      </div>
     </div>
 
     <!-- Gráficos -->
-    <div class="graficos">
-      <div class="grafico-container">
-        <h3 class="grafico-titulo">Evasão por Série (2023)</h3>
-        <canvas id="grafico-barras"></canvas>
-      </div>
-      <div class="grafico-container">
-        <h3 class="grafico-titulo">Tendência Anual</h3>
-        <canvas id="grafico-linhas"></canvas>
-      </div>
+    <div id="graficos" class="graficos">
+      <!-- Gráficos serão renderizados pelo JavaScript -->
     </div>
 
     <!-- Botão de Exportação -->
-    <div style="text-align: center;">
+    <div class="exportar-container">
       <button id="exportar-csv">Exportar como CSV</button>
     </div>
   </div>
 
-  <script>
-    // Dados mockados
-    const dados = {
-      todos: [15, 18, 23, 12],
-      sp: [10, 12, 15, 8],
-      am: [25, 28, 30, 22]
-    };
-
-    // Gráfico de Barras
-    const ctxBarras = document.getElementById('grafico-barras');
-    new Chart(ctxBarras, {
-      type: 'bar',
-      data: {
-        labels: ['1ª Série', '2ª Série', '3ª Série', '4ª Série'],
-        datasets: [{
-          label: 'Taxa de Evasão (%)',
-          data: dados.todos,
-          backgroundColor: 'rgba(37, 99, 235, 0.7)',
-        }]
-      }
-    });
-
-    // Gráfico de Linhas
-    const ctxLinhas = document.getElementById('grafico-linhas');
-    new Chart(ctxLinhas, {
-      type: 'line',
-      data: {
-        labels: ['2019', '2020', '2021', '2022'],
-        datasets: [{
-          label: 'Evasão Escolar',
-          data: [12, 18, 22, 20],
-          borderColor: 'rgba(37, 99, 235)',
-          fill: false
-        }]
-      }
-    });
-
-    // Filtros (simulação)
-    document.getElementById('aplicar-filtros').addEventListener('click', function() {
-      const estado = document.getElementById('estado').value;
-      alert(`Filtros aplicados: Estado - ${estado.toUpperCase()}`);
-    });
-  </script>
+  <script src="/JS/dashboard.js"></script>
 </body>
 </html>
