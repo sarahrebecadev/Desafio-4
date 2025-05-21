@@ -18,17 +18,35 @@ body {
     color: var(--preto);
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-}
+ .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
 
 h1 {
     color: var(--azul-escuro);
     margin-bottom: 2rem;
     text-align: center;
 }
+ .back-button {
+      display: inline-block;
+      background: var(--azul-primario);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-bottom: 20px;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .back-button:hover {
+      background: var(--azul-escuro);
+      transform: translateY(-2px);
+    }
 
 .filtros-container {
     background-color: var(--branco);

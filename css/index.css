@@ -1,4 +1,4 @@
-   /* Reset e Fontes */
+
         * {
             margin: 0;
             padding: 0;
@@ -14,6 +14,7 @@
             --cinza-claro: #f3f4f6;
             --branco: #ffffff;
             --preto: #1f2937;
+            --destaque: #e11d48;
         }
 
         body {
@@ -57,19 +58,17 @@
 
         /* Main Content */
         .main-container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 2rem auto;
             padding: 0 1rem;
             display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
         }
 
         .content-section {
-            flex: 1;
-            min-width: 300px;
+            width: 100%;
+            text-align: center;
         }
 
         .content-section h2 {
@@ -81,11 +80,15 @@
         .content-section p {
             margin-bottom: 1.5rem;
             color: var(--preto);
+            text-align: center;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .image-section {
-            flex: 1;
-            min-width: 300px;
+            width: 100%;
+            margin: 2rem 0;
             text-align: center;
         }
 
@@ -123,6 +126,64 @@
             font-size: 2.5rem;
             font-weight: bold;
             color: var(--azul-primario);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Seção Maranhão */
+        .maranhao-section {
+            background-color: var(--branco);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 3rem auto;
+            border-left: 5px solid var(--destaque);
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .maranhao-section h2 {
+            color: var(--destaque);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .maranhao-section h3 {
+            color: var(--azul-escuro);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.4rem;
+        }
+
+        .maranhao-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .maranhao-stat {
+            background-color: var(--cinza-claro);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .maranhao-stat .number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--destaque);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Listas */
+        .maranhao-section ul {
+            text-align: left;
+            max-width: 600px;
+            margin: 1rem auto;
+            padding-left: 1.5rem;
+        }
+
+        .maranhao-section li {
             margin-bottom: 0.5rem;
         }
 
@@ -192,16 +253,18 @@
                 justify-content: center;
             }
 
-            .main-container {
-                flex-direction: column;
-            }
-
-            .content-section, .image-section {
-                width: 100%;
-            }
-
-            .stat-card {
+            .stat-card, .maranhao-stat {
                 width: 100%;
                 max-width: 300px;
+            }
+            
+            .maranhao-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
             }
         }

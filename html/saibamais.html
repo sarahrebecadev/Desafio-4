@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saiba Mais sobre Educação Básica no Brasil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset e Fontes */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Variáveis de Cor */
+        :root {
+            --azul-primario: #2563eb;
+            --azul-escuro: #1e40af;
+            --verde: #16a34a;
+            --cinza-claro: #f3f4f6;
+            --branco: #ffffff;
+            --preto: #1f2937;
+            --destaque: #e11d48;
+        }
+
+        body {
+            background-color: var(--cinza-claro);
+            color: var(--preto);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header-container {
+            background: linear-gradient(135deg, var(--azul-primario), var(--azul-escuro));
+            color: var(--branco);
+            padding: 2rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        #title h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-menu a {
+            color: var(--branco);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-menu a:hover {
+            opacity: 0.8;
+        }
+
+        /* Main Content */
+        .main-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .page-header h1 {
+            font-size: 2rem;
+            color: var(--azul-escuro);
+            margin-bottom: 1rem;
+        }
+
+        .content-section {
+            background-color: var(--branco);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .content-section h2 {
+            color: var(--azul-primario);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+        }
+
+        .content-section p {
+            margin-bottom: 1rem;
+        }
+
+        .content-section ul {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        .content-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .image-section {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .hero-image {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Cards de Destaque */
+        .feature-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background-color: var(--branco);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid var(--azul-primario);
+        }
+
+        .feature-card h3 {
+            color: var(--azul-escuro);
+            margin-bottom: 1rem;
+        }
+
+        /* Botões */
+        .back-button {
+            display: inline-block;
+            background: var(--azul-primario);
+            color: var(--branco);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .back-button:hover {
+            background: var(--azul-escuro);
+            transform: translateY(-2px);
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.5rem;
+            }
+
+            .nav-menu {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+
+            .feature-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header-container">
+        <div id="title">
+            <h1>Educação Básica no Brasil</h1>
+        </div>
+
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="dashboard.html">Dados</a></li>
+                <li><a href="engajamento.html">Apoie</a></li>
+                <li><a href="./home.html">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        <div class="page-header">
+            <h1>Saiba Mais sobre Educação Básica</h1>
+            <p>Informações detalhadas sobre os desafios e iniciativas na educação brasileira</p>
+        </div>
+
+        <section class="content-section">
+            <h2>O que é Educação Básica?</h2>
+            <p>A educação básica no Brasil compreende três etapas obrigatórias e gratuitas:</p>
+            <ul>
+                <li><strong>Educação Infantil</strong> (creche e pré-escola)</li>
+                <li><strong>Ensino Fundamental</strong> (9 anos de duração)</li>
+                <li><strong>Ensino Médio</strong> (3 anos de duração)</li>
+            </ul>
+            <p>É um direito de todos os brasileiros garantido pela Constituição Federal e pela Lei de Diretrizes e Bases da Educação (LDB).</p>
+        </section>
+
+        <section class="image-section">
+            <img src="/images/escola-brasil.png" alt="Estudantes em sala de aula no Brasil" class="hero-image">
+        </section>
+
+        <section class="content-section">
+            <h2>Principais Desafios</h2>
+            
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <h3>Evasão Escolar</h3>
+                    <p>Mais de 1 milhão de crianças e adolescentes entre 4 e 17 anos estão fora da escola no Brasil, segundo o IBGE.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Infraestrutura</h3>
+                    <p>40% das escolas públicas não têm biblioteca e 50% não possuem quadra esportiva.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Desigualdades Regionais</h3>
+                    <p>Enquanto o Sudeste tem IDEB médio de 5.8, o Nordeste apresenta média de 4.9 nos anos iniciais.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Iniciativas para Melhoria</h2>
+            <ul>
+                <li><strong>Fundo de Manutenção e Desenvolvimento da Educação Básica (FUNDEB)</strong> - Principal mecanismo de financiamento</li>
+                <li><strong>Busca Ativa Escolar</strong> - Identificação e reinserção de estudantes fora da escola</li>
+                <li><strong>BNCC</strong> - Base Nacional Comum Curricular para uniformizar o ensino</li>
+                <li><strong>Programas de Alfabetização</strong> - Como o Tempo de Aprender</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>Como Ajudar?</h2>
+            <p>A educação básica de qualidade é responsabilidade de todos. Você pode contribuir:</p>
+            <ul>
+                <li>Acompanhando o desempenho da escola da sua comunidade</li>
+                <li>Participando do Conselho Escolar</li>
+                <li>Doando livros e materiais</li>
+                <li>Apoiando organizações que trabalham pela educação</li>
+            </ul>
+            
+            <a href="engajamento.html" class="back-button">Quero Apoiar</a>
+            <a href="index.html" class="back-button" style="margin-left: 1rem;">Voltar à Página Inicial</a>
+        </section>
+    </main>
+</body>
+</html>
