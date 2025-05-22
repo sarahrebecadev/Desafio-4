@@ -268,3 +268,57 @@
                 gap: 1rem;
             }
         }
+        /* Adicionais para as novas melhorias */
+        .testimonial {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 4px solid #2563eb;
+        }
+        
+        blockquote {
+            font-style: italic;
+            margin: 0;
+        }
+        
+        cite {
+            display: block;
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .info-box {
+            background-color: #e6f0ff;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        .info-box h4 {
+            margin-top: 0;
+            color: #1e40af;
+        }
+        
+        .progress-bar {
+            background-color: #e5e7eb;
+            border-radius: 50px;
+            height: 25px;
+            margin: 1.5rem 0;
+        }
+        
+        .progress {
+            background: linear-gradient(90deg, #2563eb, #1e40af);
+            border-radius: 50px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+        }
+        
+        .progress span {
+            color: white;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
