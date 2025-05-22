@@ -110,6 +110,80 @@
             margin-bottom: 0.5rem;
         }
 
+        .educacao-basica {
+            background-color: var(--branco);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .educacao-basica h2 {
+            color: var(--azul-primario);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .educacao-desc {
+            margin-bottom: 2.5rem;
+            color: var(--preto);
+            font-size: 1rem;
+        }
+
+        .card-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+            flex: 1 1 calc(33.333% - 1rem); 
+            max-width: calc(33.333% - 1rem);
+            min-width: 200px;
+            box-sizing: border-box;
+            text-align: left;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #e5f0ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .card-icon img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .card h3 {
+        color: var(--azul-primario);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+
         .image-section {
             text-align: center;
             margin: 2rem 0;
@@ -199,7 +273,6 @@
             <h1>Saiba Mais sobre Educação Básica</h1>
             <p>Informações detalhadas sobre os desafios e iniciativas na educação brasileira</p>
         </div>
-
         <section class="content-section">
             <h2>O que é Educação Básica?</h2>
             <p>A educação básica no Brasil compreende três etapas obrigatórias e gratuitas:</p>
@@ -208,30 +281,69 @@
                 <li><strong>Ensino Fundamental</strong> (9 anos de duração)</li>
                 <li><strong>Ensino Médio</strong> (3 anos de duração)</li>
             </ul>
-            <p>É um direito de todos os brasileiros garantido pela Constituição Federal e pela Lei de Diretrizes e Bases da Educação (LDB).</p>
         </section>
 
-        <section class="image-section">
-            <img src="/images/escola-brasil.png" alt="Estudantes em sala de aula no Brasil" class="hero-image">
-        </section>
+        <section class="educacao-basica">
+            <h2>Entendendo a Educação Básica</h2>
+            <p class="educacao-desc">
+                A educação básica é o alicerce para o desenvolvimento integral de crianças e adolescentes, preparando-os para os desafios do futuro.
+            </p>
 
-        <section class="content-section">
-            <h2>Principais Desafios</h2>
-            
-            <div class="feature-cards">
-                <div class="feature-card">
-                    <h3>Evasão Escolar</h3>
-                    <p>Mais de 1 milhão de crianças e adolescentes entre 4 e 17 anos estão fora da escola no Brasil, segundo o IBGE.</p>
+            <div class="card-grid">
+                <div class="card">
+                <div class="card-icon">
+                    <img src="/images/icone livro.png" alt="Ícone de livro">
                 </div>
-                <div class="feature-card">
-                    <h3>Infraestrutura</h3>
-                    <p>40% das escolas públicas não têm biblioteca e 50% não possuem quadra esportiva.</p>
+                <h3>Pilares Fundamentais</h3>
+                <p>
+                    A educação básica brasileira é fundamentada em princípios que visam o desenvolvimento pleno do estudante, preparando-o para exercer a cidadania e progredir no trabalho e estudos posteriores.
+                </p>
                 </div>
-                <div class="feature-card">
-                    <h3>Desigualdades Regionais</h3>
-                    <p>Enquanto o Sudeste tem IDEB médio de 5.8, o Nordeste apresenta média de 4.9 nos anos iniciais.</p>
+
+                <div class="card">
+                <div class="card-icon">
+                    <img src="/images/icone legislacao.png" alt="Ícone de justiça">
+                </div>
+                <h3>Legislação Educacional</h3>
+                <p>
+                    Regida pela Lei de Diretrizes e Bases da Educação Nacional (LDB), a educação básica é um direito garantido pela Constituição Federal a todos os brasileiros.
+                </p>
+                </div>
+
+                <div class="card">
+                <div class="card-icon">
+                    <img src="/images/icone alvo.png" alt="Ícone de alvo">
+                </div>
+                <h3>Objetivos Principais</h3>
+                <p>
+                    Formar cidadãos críticos e conscientes, desenvolver habilidades e competências essenciais, e proporcionar uma base sólida para a continuidade dos estudos são os principais objetivos da educação básica.
+                </p>
                 </div>
             </div>
+            </section>
+
+            
+            <section class="image-section">
+                <img src="/images/escola-brasil.png" alt="Estudantes em sala de aula no Brasil" class="hero-image">
+            </section>
+
+            <section class="content-section">
+                <h2>Principais Desafios</h2>
+                
+                <div class="feature-cards">
+                    <div class="feature-card">
+                        <h3>Evasão Escolar</h3>
+                        <p>Mais de 1 milhão de crianças e adolescentes entre 4 e 17 anos estão fora da escola no Brasil, segundo o IBGE.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Infraestrutura</h3>
+                        <p>40% das escolas públicas não têm biblioteca e 50% não possuem quadra esportiva.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Desigualdades Regionais</h3>
+                        <p>Enquanto o Sudeste tem IDEB médio de 5.8, o Nordeste apresenta média de 4.9 nos anos iniciais.</p>
+                    </div>
+                </div>
         </section>
 
         <section class="content-section">
