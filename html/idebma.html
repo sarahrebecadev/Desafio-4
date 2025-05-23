@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Ideb</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="/css/idebma.css">
+
+</head>
+<body>
+
+  <div class="container bandeira-titulo">
+    <div class="bandeira-titulo-flex">
+      <img src="/images/Bandeira_do_Maranhão.svg" alt="Bandeira MA">
+      <h2>Estado do Maranhão</h2>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="title">Ideb</div>
+    <p>
+      O parâmetro é calculado com base no aprendizado dos alunos em português e matemática (Saeb) e no fluxo escolar (taxa de aprovação). Veja o Ideb do país e a situação das escolas.
+    </p>
+
+    <div class="dropdowns">
+      <select id="ano">
+        <script>
+            for (let ano = 2007; ano <= 2023; ano += 2) {
+              const selected = ano === 2019 ? 'selected' : '';
+              document.write(`<option value="${ano}" ${selected}>${ano}</option>`);
+            }
+        </script>
+      </select>
+
+      <select id="etapa">
+        <option value="AI">Anos Iniciais</option>
+        <option value="AF">Anos Finais</option>
+        <option value="EM">Ensino Médio</option>
+      </select>
+
+      <select id="tipo">
+        <option value="5">Pública</option>
+        <option value="2">Estadual</option>
+        <option value="3">Municipal</option>
+        <option value="1">Federal</option>
+        <option value="4">Privada</option>
+        <option value="0" selected>Total</option>
+      </select>
+
+      <button onclick="buscarDados()">Buscar</button>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="titulo">Aprendizado</div>
+        <div class="valor" id="valor-aprendizado">--</div>
+        <div class="info">Notas mais altas,<br>maior aprendizado.</div>
+      </div>
+
+      <div class="card">
+        <div class="titulo">Fluxo</div>
+        <div class="valor" id="valor-fluxo">--</div>
+        <div class="info">Maior valor,<br>maior aprovação.</div>
+      </div>
+
+      <div class="card">
+        <div class="titulo">Ideb</div>
+        <div class="valor" id="valor-ideb">--</div>
+        <div class="meta" id="meta-ideb">Meta --</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="analise">
+      <h3>📈 Avanços do Ideb no Maranhão (2007–2019)</h3>
+      <p>Entre 2007 e 2019, o Maranhão apresentou uma trajetória notável de crescimento no Índice de Desenvolvimento da Educação Básica (Ideb), evidenciando esforços contínuos para a melhoria da qualidade da educação.</p>
+      <p><strong>✅ Evolução consistente:</strong> O estado saiu de um cenário desafiador para patamares mais elevados, com aumentos expressivos nos indicadores de aprendizado e aprovação escolar.</p>
+      <p><strong>🚀 Superando expectativas:</strong> Com políticas educacionais eficazes, investimentos estratégicos e o compromisso de educadores, o Maranhão não apenas alcançou, mas superou metas importantes nesse período.</p>
+      <p><strong>🌱 Educação em expansão:</strong> Os avanços refletem uma base sólida para o futuro, promovendo mais oportunidades para estudantes e fortalecendo o papel da escola pública na transformação social.</p>
+      <p>Esse progresso inspira confiança e mostra que, com dedicação e visão, é possível transformar realidades e construir um futuro educacional ainda mais promissor.</p>
+    </div>
+  </div>
+
+
+  <script src="/JS/idebma.js"></script>
+</body>
+</html>
