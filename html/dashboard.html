@@ -11,29 +11,51 @@
   <div class="container">
     <a href="/index.html" class="back-button">← Voltar à Página Inicial</a>
     <h1>Dados de Evasão Escolar</h1>
-    
-    <!-- Filtros e Estatísticas -->
+
     <div class="filtros-container">
       <div class="filtros">
         <select id="estado">
           <option value="Todos">Todos os Estados</option>
-          <option value="SP">São Paulo</option>
+          <option value="MA">Maranhão</option> <option value="SP">São Paulo</option>
           <option value="AM">Amazonas</option>
+          </select>
+
+        <select id="ano">
+          <script>
+            for (let ano = 2007; ano <= 2023; ano += 2) {
+              const selected = ano === 2019 ? 'selected' : ''; // Padrão para 2019 ou um ano recente
+              document.write(`<option value="${ano}" ${selected}>${ano}</option>`);
+            }
+          </script>
         </select>
-        
+
+        <select id="etapa">
+          <option value="AI">Anos Iniciais</option>
+          <option value="AF">Anos Finais</option>
+          <option value="EM">Ensino Médio</option>
+        </select>
+
         <div class="info-box">
           <p class="info-label">Escolas afetadas</p>
           <p id="escolas-afetadas" class="info-value">...</p>
         </div>
+
+        <div class="info-box">
+          <p class="info-label">Taxa de Evasão Média</p>
+          <p id="taxa-evasao-media" class="info-value">...</p>
+        </div>
+
+        <div class="info-box">
+          <p class="info-label">Alunos Evadidos</p>
+          <p id="alunos-evadidos" class="info-value">...</p>
+        </div>
       </div>
     </div>
 
-    <!-- Gráficos -->
     <div id="graficos" class="graficos">
-      <!-- Gráficos serão renderizados pelo JavaScript -->
+      <canvas id="evasionChart"></canvas>
     </div>
 
-    <!-- Botão de Exportação -->
     <div class="exportar-container">
       <button id="exportar-csv">Exportar como CSV</button>
     </div>

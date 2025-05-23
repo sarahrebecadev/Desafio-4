@@ -1,0 +1,272 @@
+[
+  {
+    "estado_id": "MA",
+    "estado_nome": "Maranhão",
+    "ano": 2007,
+    "etapa_id": "AI",
+    "total_escolas_afetadas": 1500,
+    "taxa_evasao_media": 5.2,
+    "alunos_evadidos": 25000,
+    "meta_evasao": 4.5
+  },
+  {
+    "estado_id": "MA",
+    "estado_nome": "Maranhão",
+    "ano": 2009,
+    "etapa_id": "AI",
+    "total_escolas_afetadas": 1450,
+    "taxa_evasao_media": 4.8,
+    "alunos_evadidos": 23000,
+    "meta_evasao": 4.0
+  },
+  {
+    "estado_id": "MA",
+    "estado_nome": "Maranhão",
+    "ano": 2011,
+    "etapa_id": "AI",
+    "total_escolas_afetadas": 1400,
+    "taxa_evasao_media": 4.1,
+    "alunos_evadidos": 20000,
+    "meta_evasao": 3.5
+  },
+  {
+    "estado_id": "MA",
+    "estado_nome": "Maranhão",
+    "ano": 2013,
+    "etapa_id": "AI",
+    "total_escolas_afetadas": 1350,
+    "taxa_evasao_media": 3.9,
+    "alunos_evadidos": 18000,
+    "meta_evasao": 3.2
+  },
+  {
+    "estado_id": "MA",
+    "estado_nome": "Maranhão",
+    "ano": 2015,
+    "etapa_id": "AI",
+    "total_escolas_afetadas": 1300,
+    "taxa_evasao_media": 3.5,
+    "alunos_evadidos": 16000,
+    "meta_evasao": 3.0
+  },
+  {
+    "estado_id": "MA",
+    "estado_nome": "Maranhão",
+    "ano": 2017,
+    "etapa_id": "AI",
+    "total_escolas_afetadas": 1250,
+    "taxa_evasao_media": 3.1,
+    "alunos_evadidos": 14000,
+    "meta_evasao": 2.8
+  },
+  {
+    "estado_id": "MA",
+    "estado_nome": "Maranhão",
+    "ano": 2019,
+    "etapa_id": "AI",
+    "total_escolas_afetadas": 1200,
+    "taxa_evasao_media": 2.9,
+    "alunos_evadidos": 12000,
+    "meta_evasao": 2.5
+  },
+  {
+    "estado_id": "MA",
+    "estado_nome": "Maranhão",
+    "ano": 2021,
+    "etapa_id": "AI",
+    "total_escolas_afetadas": 1220,
+    "taxa_evasao_media": 3.0,
+    "alunos_evadidos": 12500,
+    "meta_evasao": 2.4
+  },
+  {
+    "estado_id": "MA",
+    "estado_nome": "Maranhão",
+    "ano": 2023,
+    "etapa_id": "AI",
+    "total_escolas_afetadas": 1210,
+    "taxa_evasao_media": 3.1,
+    "alunos_evadidos": 12700,
+    "meta_evasao": 2.3
+  },
+  {
+    "estado_id": "MA",
+    "estado_nome": "Maranhão",
+    "ano": 2007,
+    "etapa_id": "AF",
+    "total_escolas_afetadas": 900,
+    "taxa_evasao_media": 7.5,
+    "alunos_evadidos": 30000,
+    "meta_evasao": 6.8
+  },
+  {
+    "estado_id": "MA",
+    "estado_nome": "Maranhão",
+    "ano": 2009,
+    "etapa_id": "AF",
+    "total_escolas_afetadas": 880,
+    "taxa_evasao_media": 7.0,
+    "alunos_evadidos": 28000,
+    "meta_evasao": 6.0
+  },
+  {
+    "estado_id": "MA",
+    "estado_nome": "Maranhão",
+    "ano": 2011,
+    "etapa_id": "AF",
+    "total_escolas_afetadas": 850,
+    "taxa_evasao_media": 6.5,
+    "alunos_evadidos": 26000,
+    "meta_evasao": 5.5
+  },
+  {
+    "estado_id": "MA",
+    "estado_nome": "Maranhão",
+    "ano": 2013,
+    "etapa_id": "AF",
+    "total_escolas_afetadas": 820,
+    "taxa_evasao_media": 6.0,
+    "alunos_evadidos": 24000,
+    "meta_evasao": 5.0
+  },
+  {
+    "estado_id": "MA",
+    "estado_nome": "Maranhão",
+    "ano": 2015,
+    "etapa_id": "AF",
+    "total_escolas_afetadas": 800,
+    "taxa_evasao_media": 5.5,
+    "alunos_evadidos": 22000,
+    "meta_evasao": 4.8
+  },
+  {
+    "estado_id": "MA",
+    "estado_nome": "Maranhão",
+    "ano": 2017,
+    "etapa_id": "AF",
+    "total_escolas_afetadas": 780,
+    "taxa_evasao_media": 5.0,
+    "alunos_evadidos": 20000,
+    "meta_evasao": 4.5
+  },
+  {
+    "estado_id": "MA",
+    "estado_nome": "Maranhão",
+    "ano": 2019,
+    "etapa_id": "AF",
+    "total_escolas_afetadas": 750,
+    "taxa_evasao_media": 4.5,
+    "alunos_evadidos": 18000,
+    "meta_evasao": 4.0
+  },
+  {
+    "estado_id": "MA",
+    "estado_nome": "Maranhão",
+    "ano": 2021,
+    "etapa_id": "AF",
+    "total_escolas_afetadas": 760,
+    "taxa_evasao_media": 4.7,
+    "alunos_evadidos": 18500,
+    "meta_evasao": 3.8
+  },
+  {
+    "estado_id": "MA",
+    "estado_nome": "Maranhão",
+    "ano": 2023,
+    "etapa_id": "AF",
+    "total_escolas_afetadas": 770,
+    "taxa_evasao_media": 4.9,
+    "alunos_evadidos": 19000,
+    "meta_evasao": 3.7
+  },
+  {
+    "estado_id": "MA",
+    "estado_nome": "Maranhão",
+    "ano": 2007,
+    "etapa_id": "EM",
+    "total_escolas_afetadas": 500,
+    "taxa_evasao_media": 12.0,
+    "alunos_evadidos": 40000,
+    "meta_evasao": 10.0
+  },
+  {
+    "estado_id": "MA",
+    "estado_nome": "Maranhão",
+    "ano": 2009,
+    "etapa_id": "EM",
+    "total_escolas_afetadas": 480,
+    "taxa_evasao_media": 11.5,
+    "alunos_evadidos": 38000,
+    "meta_evasao": 9.5
+  },
+  {
+    "estado_id": "MA",
+    "estado_nome": "Maranhão",
+    "ano": 2011,
+    "etapa_id": "EM",
+    "total_escolas_afetadas": 460,
+    "taxa_evasao_media": 10.8,
+    "alunos_evadidos": 35000,
+    "meta_evasao": 9.0
+  },
+  {
+    "estado_id": "MA",
+    "estado_nome": "Maranhão",
+    "ano": 2013,
+    "etapa_id": "EM",
+    "total_escolas_afetadas": 440,
+    "taxa_evasao_media": 10.0,
+    "alunos_evadidos": 32000,
+    "meta_evasao": 8.5
+  },
+  {
+    "estado_id": "MA",
+    "estado_nome": "Maranhão",
+    "ano": 2015,
+    "etapa_id": "EM",
+    "total_escolas_afetadas": 420,
+    "taxa_evasao_media": 9.5,
+    "alunos_evadidos": 30000,
+    "meta_evasao": 8.0
+  },
+  {
+    "estado_id": "MA",
+    "estado_nome": "Maranhão",
+    "ano": 2017,
+    "etapa_id": "EM",
+    "total_escolas_afetadas": 400,
+    "taxa_evasao_media": 9.0,
+    "alunos_evadidos": 28000,
+    "meta_evasao": 7.5
+  },
+  {
+    "estado_id": "MA",
+    "estado_nome": "Maranhão",
+    "ano": 2019,
+    "etapa_id": "EM",
+    "total_escolas_afetadas": 380,
+    "taxa_evasao_media": 8.5,
+    "alunos_evadidos": 26000,
+    "meta_evasao": 7.0
+  },
+  {
+    "estado_id": "MA",
+    "estado_nome": "Maranhão",
+    "ano": 2021,
+    "etapa_id": "EM",
+    "total_escolas_afetadas": 390,
+    "taxa_evasao_media": 8.8,
+    "alunos_evadidos": 27000,
+    "meta_evasao": 6.8
+  },
+  {
+    "estado_id": "MA",
+    "estado_nome": "Maranhão",
+    "ano": 2023,
+    "etapa_id": "EM",
+    "total_escolas_afetadas": 400,
+    "taxa_evasao_media": 9.2,
+    "alunos_evadidos": 28500,
+    "meta_evasao": 6.5
+  }
+]

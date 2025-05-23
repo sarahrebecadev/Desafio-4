@@ -1,171 +1,243 @@
-// Dados mockados
-const dadosCompletos = {
-    'Todos': {
-        evasaoPorSerie: [15, 18, 23, 12],
-        tendenciaAnual: [12, 15, 18, 15],
-        escolasAfetadas: 12500
-    },
-    'SP': {
-        evasaoPorSerie: [10, 12, 15, 8],
-        tendenciaAnual: [8, 10, 14, 12],
-        escolasAfetadas: 4500
-    },
-    'AM': {
-        evasaoPorSerie: [25, 28, 30, 22],
-        tendenciaAnual: [20, 25, 28, 27],
-        escolasAfetadas: 800
-    }
-};
+// JS/dashboard.js
 
-document.addEventListener('DOMContentLoaded', function() {
-    const estadoSelect = document.getElementById('estado');
-    const escolasAfetadasElement = document.getElementById('escolas-afetadas');
-    const graficosContainer = document.getElementById('graficos');
-    const exportarBtn = document.getElementById('exportar-csv');
-    
-    let currentEstado = 'Todos';
-    let currentData = dadosCompletos[currentEstado];
+// Nao precisamos de token para a API local
+// const TOKEN = 'YOUR_API_TOKEN_HERE';
 
-    // Atualiza o dashboard quando o estado muda
-    estadoSelect.addEventListener('change', function() {
-        currentEstado = this.value;
-        currentData = dadosCompletos[currentEstado];
-        updateDashboard();
+async function fetchEvasionData() {
+  // O estado agora será sempre 'MA' já que só temos dados do Maranhão
+  const estado = 'MA'; // Forçamos o estado para Maranhão
+  const ano = parseInt(document.getElementById('ano').value);
+  const etapa = document.getElementById('etapa').value;
+
+  const url = '/JS/evasion_data.json'; // Caminho para o arquivo JSON estático
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`Erro ao carregar os dados: ${response.status}`);
+    const allEvasionData = await response.json();
+
+    // Filtra os dados com base nas seleções (estado já é 'MA')
+    const filteredData = allEvasionData.filter(item => {
+      const matchEstado = item.estado_id === estado; // Sempre MA
+      const matchAno = item.ano === ano;
+      const matchEtapa = item.etapa_id === etapa;
+      return matchEstado && matchAno && matchEtapa;
     });
 
-    // Configura o botão de exportação
-    exportarBtn.addEventListener('click', exportarCSV);
+    const evasionData = filteredData[0]; // Pega o primeiro item correspondente, se houver
 
-    // Renderiza os gráficos inicialmente
-    updateDashboard();
+    // Atualiza as caixas de informações
+    const escolasAfetadasElement = document.getElementById('escolas-afetadas');
+    const taxaEvasaoMediaElement = document.getElementById('taxa-evasao-media');
+    const alunosEvadidosElement = document.getElementById('alunos-evadidos');
 
-    function updateDashboard() {
-        // Atualiza estatísticas
-        escolasAfetadasElement.textContent = currentData.escolasAfetadas.toLocaleString('pt-BR');
-
-        // Limpa gráficos anteriores
-        graficosContainer.innerHTML = '';
-
-        // Adiciona loading
-        const loadingDiv = document.createElement('div');
-        loadingDiv.className = 'col-span-2 flex justify-center items-center h-64';
-        loadingDiv.innerHTML = '<p class="text-gray-500">Carregando dados...</p>';
-        graficosContainer.appendChild(loadingDiv);
-
-        // Simula carregamento
-        setTimeout(() => {
-            graficosContainer.innerHTML = '';
-            renderGraficos();
-        }, 500);
+    if (evasionData) {
+      escolasAfetadasElement.innerText = evasionData.total_escolas_afetadas.toLocaleString('pt-BR');
+      taxaEvasaoMediaElement.innerText = formatar(evasionData.taxa_evasao_media, true);
+      alunosEvadidosElement.innerText = evasionData.alunos_evadidos.toLocaleString('pt-BR');
+    } else {
+      escolasAfetadasElement.innerText = 'Não disponível';
+      taxaEvasaoMediaElement.innerText = 'Não disponível';
+      alunosEvadidosElement.innerText = 'Não disponível';
     }
 
-    function renderGraficos() {
-        // Gráfico de barras
-        const barDiv = document.createElement('div');
-        barDiv.className = 'grafico-container';
-        barDiv.innerHTML = `
-            <h3 class="grafico-titulo">Evasão por série (2023)</h3>
-            <div class="chart-container">
-                <canvas id="grafico-barras"></canvas>
-            </div>
-        `;
-        graficosContainer.appendChild(barDiv);
+  } catch (error) {
+    console.error('Erro ao buscar dados de evasão:', error);
+    document.getElementById('escolas-afetadas').innerText = 'Erro';
+    document.getElementById('taxa-evasao-media').innerText = 'Erro';
+    document.getElementById('alunos-evadidos').innerText = 'Erro';
+  }
+}
 
-        // Gráfico de linhas
-        const lineDiv = document.createElement('div');
-        lineDiv.className = 'grafico-container';
-        lineDiv.innerHTML = `
-            <h3 class="grafico-titulo">Tendência anual</h3>
-            <div class="chart-container">
-                <canvas id="grafico-linhas"></canvas>
-            </div>
-        `;
-        graficosContainer.appendChild(lineDiv);
+let evasionChartInstance = null; // Variável para armazenar a instância do gráfico
 
-        // Configuração dos gráficos
-        const barCtx = document.getElementById('grafico-barras').getContext('2d');
-        const lineCtx = document.getElementById('grafico-linhas').getContext('2d');
+async function renderEvasionCharts() {
+  const estado = 'MA'; // Forçamos o estado para Maranhão
+  const etapa = document.getElementById('etapa').value;
 
-        new Chart(barCtx, {
-            type: 'bar',
-            data: {
-                labels: ['1ª série', '2ª série', '3ª série', '4ª série'],
-                datasets: [{
-                    label: `Evasão em ${currentEstado} (%)`,
-                    data: currentData.evasaoPorSerie,
-                    backgroundColor: [
-                        'rgba(59, 130, 246, 0.7)',
-                        'rgba(16, 185, 129, 0.7)',
-                        'rgba(245, 158, 11, 0.7)',
-                        'rgba(239, 68, 68, 0.7)'
-                    ],
-                    borderColor: [
-                        'rgba(59, 130, 246, 1)',
-                        'rgba(16, 185, 129, 1)',
-                        'rgba(245, 158, 11, 1)',
-                        'rgba(239, 68, 68, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: 'Percentual de evasão (%)'
-                        }
-                    }
-                }
-            }
-        });
+  const url = '/JS/evasion_data.json'; // Caminho para o arquivo JSON estático
 
-        new Chart(lineCtx, {
-            type: 'line',
-            data: {
-                labels: ['2019', '2020', '2021', '2022'],
-                datasets: [{
-                    label: `Tendência anual em ${currentEstado} (%)`,
-                    data: currentData.tendenciaAnual,
-                    borderColor: 'rgba(59, 130, 246)',
-                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                    borderWidth: 2,
-                    tension: 0.3,
-                    fill: true
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: 'Percentual de evasão (%)'
-                        }
-                    }
-                }
-            }
-        });
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`Erro ao carregar os dados: ${response.status}`);
+    const allEvasionData = await response.json();
+
+    // Filtra os dados para o gráfico (todos os anos para o Maranhão e a etapa selecionada)
+    const chartData = allEvasionData.filter(item => {
+      const matchEstado = item.estado_id === estado; // Sempre MA
+      const matchEtapa = item.etapa_id === etapa;
+      return matchEstado && matchEtapa;
+    }).sort((a, b) => a.ano - b.ano); // Ordena por ano para o gráfico
+
+    const anos = chartData.map(item => item.ano);
+    const taxaEvasao = chartData.map(item => parseFloat(item.taxa_evasao_media));
+    const metaEvasao = chartData.map(item => parseFloat(item.meta_evasao)); // Adicionado meta para o gráfico
+
+    const graficosContainer = document.getElementById('graficos');
+    graficosContainer.innerHTML = '<canvas id="evasionChart"></canvas>'; // Limpa o canvas anterior
+
+    const ctx = document.getElementById('evasionChart').getContext('2d');
+
+    // Destrói a instância anterior do gráfico se ela existir
+    if (evasionChartInstance) {
+      evasionChartInstance.destroy();
     }
 
-    function exportarCSV() {
-        let csvContent = "Série,Evasão(%)\n";
-        const labels = ['1ª série', '2ª série', '3ª série', '4ª série'];
-        
-        labels.forEach((label, index) => {
-            csvContent += `${label},${currentData.evasaoPorSerie[index]}\n`;
-        });
-        
-        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.setAttribute('href', url);
-        link.setAttribute('download', `evasao-${currentEstado}.csv`);
-        link.click();
+    evasionChartInstance = new Chart(ctx, {
+      type: 'bar', // Pode ser 'line' também
+      data: {
+        labels: anos,
+        datasets: [{
+          label: 'Taxa de Evasão Média (%)',
+          data: taxaEvasao,
+          backgroundColor: 'rgba(30,144,255,0.7)', // Cor azul como no Ideb
+          borderColor: 'dodgerblue',
+          borderWidth: 1
+        },
+        {
+          label: 'Meta de Evasão (%)',
+          data: metaEvasao,
+          type: 'line', // Linha para a meta
+          borderColor: 'green',
+          backgroundColor: 'green',
+          borderWidth: 2,
+          pointRadius: 5,
+          pointBackgroundColor: 'white',
+          pointBorderColor: 'green',
+          fill: false
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: `Evolução da Taxa de Evasão (Maranhão - ${etapa})` // Título fixo para Maranhão
+          },
+          tooltip: {
+            mode: 'index',
+            intersect: false
+          },
+          legend: {
+            position: 'bottom'
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 20 // Ajuste o valor máximo conforme seus dados de taxa de evasão
+          }
+        }
+      }
+    });
+
+  } catch (error) {
+    console.error('Erro ao carregar gráfico de evasão:', error);
+    const graficosContainer = document.getElementById('graficos');
+    graficosContainer.innerHTML = '<p>Não foi possível carregar o gráfico de evasão.</p>';
+  }
+}
+
+// Helper function
+const formatar = (valor, isPercent = false) => {
+  if (valor === null || valor === undefined || isNaN(valor)) return '--';
+  const num = parseFloat(valor);
+  return isPercent ? num.toFixed(1) + '%' : num.toFixed(2);
+};
+
+
+// Event Listeners
+document.addEventListener('DOMContentLoaded', () => {
+  // Define os anos do dropdown dinamicamente
+  const anoSelect = document.getElementById('ano');
+  for (let ano = 2007; ano <= 2023; ano += 2) {
+    const option = document.createElement('option');
+    option.value = ano;
+    option.textContent = ano;
+    if (ano === 2019) { // Define um ano padrão
+      option.selected = true;
     }
+    anoSelect.appendChild(option);
+  }
+
+  // **Popula o dropdown de estado APENAS com Maranhão e o seleciona**
+  const estadoSelect = document.getElementById('estado');
+  estadoSelect.innerHTML = ''; // Limpa as opções existentes
+  const maranhaoOption = document.createElement('option');
+  maranhaoOption.value = 'MA';
+  maranhaoOption.textContent = 'Maranhão';
+  maranhaoOption.selected = true; // Seleciona Maranhão por padrão
+  estadoSelect.appendChild(maranhaoOption);
+  estadoSelect.disabled = true; // Opcional: Desabilita o dropdown para que o usuário não possa mudar
+
+  fetchEvasionData();
+  renderEvasionCharts();
+
+  // O evento de 'change' no estado não é mais necessário se ele estiver desabilitado,
+  // mas vamos mantê-lo por segurança caso você decida habilitá-lo no futuro.
+  document.getElementById('estado').addEventListener('change', () => {
+    fetchEvasionData();
+    renderEvasionCharts();
+  });
+
+  document.getElementById('ano').addEventListener('change', () => {
+    fetchEvasionData();
+    // O gráfico de tendência geralmente não muda por ano, mas por estado/etapa.
+    // Se você quiser que o gráfico mostre apenas o ano selecionado, a lógica do gráfico precisaria ser ajustada.
+    // No entanto, para um gráfico de *evolução*, ele precisa de múltiplos anos.
+  });
+
+  document.getElementById('etapa').addEventListener('change', () => {
+    fetchEvasionData();
+    renderEvasionCharts();
+  });
+});
+
+// Export CSV Function
+document.getElementById('exportar-csv').addEventListener('click', async () => {
+  const estado = 'MA'; // Exporta sempre para Maranhão
+  const etapa = document.getElementById('etapa').value;
+  const url = '/JS/evasion_data.json';
+
+  try {
+    const response = await fetch(url);
+    const allEvasionData = await response.json();
+
+    const dataToExport = allEvasionData.filter(item => {
+      const matchEstado = item.estado_id === estado; // Sempre MA
+      const matchEtapa = item.etapa_id === etapa;
+      return matchEstado && matchEtapa;
+    }).sort((a, b) => a.ano - b.ano);
+
+    if (dataToExport.length === 0) {
+      alert('Nenhum dado para exportar para a seleção atual.');
+      return;
+    }
+
+    let csvContent = "data:text/csv;charset=utf-8,Estado,Ano,Etapa,Escolas Afetadas,Taxa Evasao Media,Alunos Evadidos,Meta Evasao\n";
+
+    dataToExport.forEach(item => {
+      const row = [
+        item.estado_nome,
+        item.ano,
+        item.etapa_id,
+        item.total_escolas_afetadas,
+        formatar(item.taxa_evasao_media, true),
+        item.alunos_evadidos,
+        formatar(item.meta_evasao, true)
+      ].join(',');
+      csvContent += row + "\n";
+    });
+
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", `evasao_dados_Maranhao_${etapa}.csv`); // Nome do arquivo específico
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  } catch (error) {
+    console.error('Erro ao exportar CSV:', error);
+    alert('Ocorreu um erro ao exportar os dados.');
+  }
 });
